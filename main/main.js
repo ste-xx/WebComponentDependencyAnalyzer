@@ -1,8 +1,10 @@
 'use strict';
 
-define(['visitor'],function (visitor) {
+define(['visitor'], function (visitor) {
+    return {
+      calculateDependenciesFor : function(pathToFile, resultCallback){
+          visitor.visit(pathToFile, resultCallback);
+      }
+    };
 
-    visitor.visit("C:\\Users\\sonste\\Desktop\\projekte\\chrome ext\\srtchrome\\html\\popup.html",function(result){
-        console.log(result);
-    });
 });

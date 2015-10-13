@@ -9,17 +9,6 @@ requirejs.config({
 
 describe('fileVisitor', function () {
     describe('visit', function () {
-        //it('should return the correct dependencies', function (done) {
-        //    var fv = requirejs('main/fileVisitor');
-        //    fv.visit(__dirname + '\\html\\inner\\child2.html', function (result) {
-        //        //expect(result.length).to.equal(2);
-        //        expect(result).to.include(__dirname + '\\html\\parent.html');
-        //        expect(result).to.include(__dirname + '\\html\\parent2.html');
-        //        expect(result).to.include(__dirname + '\\html\\sibling.html');
-        //        done();
-        //    });
-        //
-        //});
 
         it('should return the correct dependencies even it is called twice', function (done) {
             var fv = requirejs('main/fileVisitor');

@@ -1,9 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-..I..</body>
-</html>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.4.8/cytoscape.js'></script>
+<div id="container" style="width:600px; height:600px;">
+
+
+</div>
+<script>
+    var cy = cytoscape({
+        container: document.getElementById('container'),
+        style: [
+            {
+                selector: 'node',
+                style: {
+                    'content': 'data(id)'
+                }
+            }
+        ]
+    });
+    cy.add(data.elements);
+
+
+</script>

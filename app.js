@@ -16,7 +16,8 @@ var app = express();
 requirejs(['main/main'],function(main){
     app.get('/',function(req,res){
         main.calculateDependenciesFor("C:\\Users\\sonste\\Desktop\\projekte\\chrome ext\\srtchrome\\html\\popup.html",function(result){
-            res.send(result);
+            //res.send(result);
+            res.render('graphexample.jade',{ data : JSON.stringify(result)});
         });
     });
 });

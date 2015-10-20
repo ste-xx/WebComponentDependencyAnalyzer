@@ -2,20 +2,49 @@
  * Created by sonste on 14.10.2015.
  */
 
-define(['cytoscape'], function (cytoscape) {
+define(['./cytoscapeInstance'], function (cytoscape) {
+
+
+    function addNode(id) {
+        cytoscape.add({
+            group: 'nodes',
+            data: {
+                id: id
+            }
+        });
+    }
+
+    function addEdge(from,to){
+        cytoscape.add({
+            group: "edges",
+            data: {
+                id: from + to + "Edge",
+                source: from,
+                target: to,
+                directed: true
+            }
+        })
+    }
+
 
     return {
         getGraphFor: function (data) {
-            var cy = cytoscape({});
-            console.log(data);
-            var eles = cy.add([
-                { group: "nodes", data: { id: "n0" } },
-                { group: "nodes", data: { id: "n1" } },
-                { group: "edges", data: { id: "e0", source: "n0", target: "n1" } }
-            ]);
+            data.forEach(function (element) {
 
+                var srcId = element.src.split("\\");
+                srcId = srcId[srcId.length - 1];
 
-          return  cy.json();
+                addNode(srcId);
+
+                element.dep.forEach(function (depElement) {
+                    var depId = depElement.split("\\");
+                    depId = depId[depId.length - 1];
+                    addNode(depId);
+                    addEdge(srcId,depId);
+                });
+
+            });
+            return cytoscape.json();
         }
     };
 });

@@ -51,6 +51,12 @@ define(['./htmlImportParser', 'fs', 'path'], function (htmlImportParser, fs, pat
                     callback = function () {
                     };
                 }
+                if(!fs.existsSync(entryPoint)){
+                    console.warn(entryPoint+" does not exist");
+                    callback([]);
+                    return;
+                }
+
                 recursiveFileWalker(entryPoint, [], function (arr) {
                     callback(arr);
                 });

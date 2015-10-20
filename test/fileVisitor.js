@@ -40,5 +40,15 @@ describe('fileVisitor', function () {
             fv.visit(__dirname+'\\html\\inner\\child2.html',call);
             fv.visit(__dirname+'\\html\\inner\\child2.html',call);
         });
+
+        it('should return an empty result if file does not exist', function (done) {
+            var fv = requirejs('main/fileVisitor');
+
+            var call = function(result){
+                expect(result.length).to.equal(0);
+                done();
+            };
+            fv.visit(__dirname+'\\html\\inner\\child2asdfasdfasdfafsdf.html',call);
+        });
     });
 });

@@ -2,7 +2,7 @@
  * Created by sonste on 14.10.2015.
  */
 
-define(['./cytoscapeInstance'], function (cytoscape) {
+define(['main/cytoscapeInstance'], function (cytoscape) {
 
 
     function addNode(id) {

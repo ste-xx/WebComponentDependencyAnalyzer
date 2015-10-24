@@ -1,13 +1,17 @@
 var expect = require('chai').expect;
 var requirejs = require('requirejs');
 
-requirejs.config({
-    nodeRequire: require,
-    baseUrl: __dirname + '/..',
-    app: '../main'
-});
 
 describe('fileVisitor', function () {
+
+    before(function() {
+        requirejs.config({
+            nodeRequire: require,
+            baseUrl: __dirname + '/..',
+            app: '../main'
+        });
+    });
+
     describe('visit', function () {
 
         it('should return the correct dependencies even it is called twice', function (done) {

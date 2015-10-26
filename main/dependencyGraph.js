@@ -2,30 +2,7 @@
  * Created by sonste on 14.10.2015.
  */
 
-define(['main/cytoscapeInstance'], function (cytoscape) {
-
-
-    function addNode(id) {
-        cytoscape.add({
-            group: 'nodes',
-            data: {
-                id: id
-            }
-        });
-    }
-
-    function addEdge(from,to){
-        cytoscape.add({
-            group: "edges",
-            data: {
-                id: from + to + "Edge",
-                source: from,
-                target: to,
-                directed: true
-            }
-        })
-    }
-
+define([], function () {
 
     return {
         getGraphFor: function (data) {

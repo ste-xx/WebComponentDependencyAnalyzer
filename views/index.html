@@ -1,7 +1,45 @@
-<body id="body" style="width:100vw; height:9999px;">
+<body id="body" style="width:100vw; height:1000px;">
 </body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.4.8/cytoscape.js'></script>
 <script>
+    var cy = cytoscape({
+        container: window.document.querySelector('#body'),
+        style: cytoscape.stylesheet()
+                .selector('node')
+                .css({
+                    'content': 'data(id)',
+                    'text-valign': 'center',
+                    'color': 'black'
+                })
+                .selector('edge')
+                .css({
+                    'target-arrow-shape': 'triangle'
+                })
+    });
+
+    data.nodes.forEach(function(e){
+        cy.add({
+            group: 'nodes',
+            data: {
+                id: e
+            }
+        });
+    });
+//
+    data.edges.forEach(function(e){
+        cy.add({
+            group: "edges",
+            data: {
+                id: e.from + e.to + "Edge",
+                source: e.from,
+                target: e.to,
+                directed: true
+            }
+        })
+    });
     console.log(data);
+
 
 
 </script>
